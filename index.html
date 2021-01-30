@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="prism.css">
+    <script src="prism.js"></script>
+    <title>PostMaster</title>
+    <style>
+        #scroll{
+            max-height: 500px;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">PostMaster</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
+            aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarText">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Contact Us</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1 class="my-3">Welcome to PostMaster</h1>
+    </div>
+    <div class="container">
+        <!-- URL box  -->
+        <div class="form-group row my-3">
+            <label for="url" class="col-sm-2 col-form-label">URL</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="urlFeild" placeholder="Enter URL here">
+            </div>
+        </div>
+        <!-- Request type box -->
+        <fieldset class="form-group">
+            <div class="row">
+                <legend class="col-form-label col-sm-2 pt-0">Request Type</legend>
+                <div class="col-sm-10">
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="type" id="get" value="GET" checked>
+                        <label class="form-check-label" for="GET">
+                            GET
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="type" id="post" value="POST">
+                        <label class="form-check-label" for="POST">
+                            POST
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+
+        <!-- content type box -->
+
+        <fieldset class="form-group">
+            <div class="row">
+                <legend class="col-form-label col-sm-2 pt-0">Content Type</legend>
+                <div class="col-sm-10">
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="contype" id="json" value="json" checked>
+                        <label class="form-check-label" for="json">
+                            JSON
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="contype" id="params" value="params">
+                        <label class="form-check-label" for="params">
+                            Custom Perameters
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+
+        <!-- Parameters box - this will hide when json option in content type -->
+        <div id="parametersBox">
+            <div class="form-row">
+                <label for="parameter" class="col-sm-2 col-form-label">Parameter 1</label>
+                <div class="col-md-4">
+                    <input type="text" class="form-control" id="paraKey1" placeholder="Enter parameter 1 key">
+                </div>
+                <div class="col-md-4">
+                    <input type="text" class="form-control" id="paraValue1" placeholder="Enter parameter 1 value">
+                </div>
+                <button id="addParam" class="btn btn-primary">+</button>
+            </div>
+            <div id="moreParam"></div>
+        </div>
+
+        <!-- JSON REQUEST BOX - this will hide on clicking parameter option in content type -->
+        <div id="jsonReq">
+            <div class="form-group row my-3">
+                <label for="jsonReq" class="col-sm-2 col-form-label">Enter Request Json</label>
+                <div class="col-sm-10">
+                    <textarea name="jsonReqText" id="jsonReqText" rows="3" class="form-control"></textarea>
+                </div>
+            </div>
+        </div>
+
+        <!-- submit button which will trigger fetch api -->
+        <div>
+            <div class="form-group row my-3">
+                <div class="col-sm-10">
+                    <button id="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="resJson">
+            <div class="form-group row my-3">
+                <label for="resJson" class="col-sm-2 col-form-label">Response</label>
+                <div class="col-sm-10">
+                    <!-- <textarea name="resJson" id="resJsonText" rows="3" class="form-control">Your response will appear here..</textarea> -->
+                    <pre id="scroll" class="language-javascript">
+                        <code id="resJsonText" class="language-javascript">
+Your response will appear here.
+                        </code>
+                    </pre>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- credit section -->
+    <div class="container my-4">
+    <div class="credit">
+        <a href="https://www.youtube.com/channel/UCeVMnSShP_Iviwkknt83cww" target="_blank" class="btn btn-primary">Visit my Teacher and Subscribe Channel</a>
+    </div>
+</div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    
+    <script src="script.js"></script>
+</body>
+
+</html>
